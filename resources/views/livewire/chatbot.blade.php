@@ -4,9 +4,9 @@
     </div>
     <div class="chat-box mt-3 mt-md-0">
         @forelse ($chatMessages as $key => $chatMessage)
-            <div wire:key="{{ $key }}" class="chat-message {{ $chatMessage->role == 'user' ? 'sent' : '' }}">
+            <div wire:key="{{ $key }}" class="chat-message {{ $chatMessage['role'] == 'user' ? 'sent' : '' }}">
                 <div class="chat-message-avatar">
-                    @if($chatMessage->role == 'assistant')
+                    @if($chatMessage['role'] == 'assistant')
                         <img src="/RagsAI-LOGO.png" alt="Avatar">
                     @else 
                         <img src="/user.png" alt="">
@@ -14,7 +14,7 @@
                 </div>
                 
                 <div>
-                    <p>{{ $chatMessage->content }}</p>
+                    <p>{{ $chatMessage['content'] }}</p>
                 </div>
             </div>
         @empty
