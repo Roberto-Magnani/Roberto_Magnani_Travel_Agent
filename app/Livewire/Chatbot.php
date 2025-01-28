@@ -26,7 +26,7 @@ class Chatbot extends Component
         $this->validate();
 
         $this->chatMessages[] = [
-            'role' => 'user',
+            'type' => 'human',
             'content' => $this->currentMessage
         ];
 
@@ -45,12 +45,18 @@ class Chatbot extends Component
 
         $content = $response->json();
 
-        dd($content);
+        if(!isset($content['messages']))
+        {
+            dd($content);
+        }
 
-        $this->chatMessages[] = [
-            'role' => 'assistant',
-            'content' => $content['choices'][0]['message']['content']
-        ];
+        // $messages = collect($content['messages']);
+
+        // $this->chatMessages = $messages->filter(function($message){
+        //     return $message['type'] !== 'system';
+        // })->toArray();
+
+        $this->chatMessages = $content['messages'];
     }
 
     public function render()

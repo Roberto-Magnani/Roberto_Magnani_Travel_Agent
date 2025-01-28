@@ -4,19 +4,29 @@
     </div>
     <div class="chat-box mt-3 mt-md-0">
         @forelse ($chatMessages as $key => $chatMessage)
-            <div wire:key="{{ $key }}" class="chat-message {{ $chatMessage['role'] == 'user' ? 'sent' : '' }}">
-                <div class="chat-message-avatar">
-                    @if($chatMessage['role'] == 'assistant')
+            @if($chatMessage['type'] == 'human')
+                <div wire:key="{{ $key }}" class="chat-message sent">
+                    <div class="chat-message-avatar">
+                            <img src="/user.png" alt="">
+                    </div>
+                    
+                    <div>
+                        <p>{{ $chatMessage['content'] }}</p>
+                    </div>
+                </div>
+            @endif
+
+            @if($chatMessage['type'] == 'ai' && $chatMessage['content'])
+                <div wire:key="{{ $key }}" class="chat-message">
+                    <div class="chat-message-avatar">
                         <img src="/RagsAI-LOGO.png" alt="Avatar">
-                    @else 
-                        <img src="/user.png" alt="">
-                    @endif
+                    </div>
+                    
+                    <div>
+                        <p>{{ $chatMessage['content'] }}</p>
+                    </div>
                 </div>
-                
-                <div>
-                    <p>{{ $chatMessage['content'] }}</p>
-                </div>
-            </div>
+            @endif
         @empty
             <div class="chat-message">
                 <div>
