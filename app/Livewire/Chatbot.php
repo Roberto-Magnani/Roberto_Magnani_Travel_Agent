@@ -39,11 +39,13 @@ class Chatbot extends Component
 
 
     public function generateResponse(){
-        $response = Http::post("http://127.0.0.1:8080/chat/rag-completion" , [
-            'message' => $this->userPrompt
+        $response = Http::post("http://127.0.0.1:8080/chat/travel-agent" , [
+            'messages' => $this->chatMessages
         ]);
 
         $content = $response->json();
+
+        dd($content);
 
         $this->chatMessages[] = [
             'role' => 'assistant',

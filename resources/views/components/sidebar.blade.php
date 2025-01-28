@@ -36,7 +36,7 @@
             Chat
           </a>
         </li> --}}
-        <li class="mb-3">
+        {{-- <li class="mb-3">
           <a 
             href="{{ route('documents.index') }}" 
             class="nav-link link-body-emphasis {{ (Route::currentRouteName() == 'documents.index') ? 'active' : ''}}"
@@ -44,7 +44,7 @@
             <i class="bi bi-file-earmark-break"></i>
             Documents
           </a>
-        </li>
+        </li> --}}
       </ul>
       <div>
 
