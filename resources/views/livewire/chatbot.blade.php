@@ -23,7 +23,7 @@
                     </div>
                     
                     <div>
-                        <p>{{ $chatMessage['content'] }}</p>
+                        <x-markdown>{{ $chatMessage['content'] }}</x-markdown>
                     </div>
                 </div>
             @endif
