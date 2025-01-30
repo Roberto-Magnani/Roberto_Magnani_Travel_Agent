@@ -54,6 +54,8 @@
 
 @script
 <script>
+const chatBox = document.querySelector('.chat-box');
+
 $wire.on('scrollChatToBottom', () => {
     setTimeout(() => {
         chatBox.scrollTop = chatBox.scrollHeight;
